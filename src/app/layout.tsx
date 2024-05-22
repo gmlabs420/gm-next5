@@ -1,0 +1,33 @@
+import type { Metadata } from "next";
+import { Londrina_Solid } from "next/font/google";
+import "./globals.css";
+import"./css/main.css";
+import ThirdwebProviderComponent from "./providers/ThirdwebProviderComponent";
+
+const londrina = Londrina_Solid({
+  weight: ['100', '300', '400', '900'],
+  subsets: ['latin']
+});
+
+export const metadata: Metadata = {
+  title: "GM",
+  description: "GM - v1",
+};
+
+
+// The {children} prop: https://welearncode.com/use-children-react/
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <body className={londrina.className + " page1 gradient-background"}>
+        <ThirdwebProviderComponent>
+          {children}
+        </ThirdwebProviderComponent>
+      </body>
+    </html>
+  );
+}
